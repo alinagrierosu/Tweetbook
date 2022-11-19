@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Tweetbook3.Contracts.Responses;
-using Tweetbook3.Contracts.v1;
+using Tweetbook.Contracts.Responses;
+using Tweetbook.Contracts.v1;
 using Tweetbook3.Services;
 
 namespace Tweetbook3.Controllers.v1

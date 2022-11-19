@@ -1,6 +1,6 @@
 ﻿using Swashbuckle.AspNetCore.Filters;
 using System;
-using Tweetbook3.Contracts.Responses;
+using Tweetbook.Contracts.Responses;
 
 namespace Tweetbook3.SwaggerExamples.Responses
 {

@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Tweetbook\\Tweetbook\\Tweetbook.Sdk\\Tweetbook.Sdk.csproj": {}
+  },
+  "projects": {
+    "C:\\Tweetbook\\Tweetbook\\Tweetbook.Contracts\\Tweetbook.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Contracts\\Tweetbook.Contracts.csproj",
+        "projectName": "Tweetbook.Contracts",
+        "projectPath": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Contracts\\Tweetbook.Contracts.csproj",
+        "packagesPath": "C:\\Users\\atalaba\\.nuget\\packages\\",
+        "outputPath": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\atalaba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Tweetbook\\Tweetbook\\Tweetbook.Sdk\\Tweetbook.Sdk.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Sdk\\Tweetbook.Sdk.csproj",
+        "projectName": "Tweetbook.Sdk",
+        "projectPath": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Sdk\\Tweetbook.Sdk.csproj",
+        "packagesPath": "C:\\Users\\atalaba\\.nuget\\packages\\",
+        "outputPath": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Sdk\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\atalaba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Tweetbook\\Tweetbook\\Tweetbook.Contracts\\Tweetbook.Contracts.csproj": {
+                "projectPath": "C:\\Tweetbook\\Tweetbook\\Tweetbook.Contracts\\Tweetbook.Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Refit": {
+              "target": "Package",
+              "version": "[4.7.51, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

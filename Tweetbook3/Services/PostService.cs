@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tweetbook.Contracts.v1.Requests.Queries;
 using Tweetbook3.Data;
 using Tweetbook3.Domain;
-using static Tweetbook3.Contracts.v1.ApiRoutes;
+using static Tweetbook.Contracts.v1.ApiRoutes;
 
 namespace Tweetbook3.Services
 {
@@ -23,9 +24,23 @@ namespace Tweetbook3.Services
             return await _dataContext.Posts.SingleOrDefaultAsync(x => x.Id == postId);
         }
 
-        public async Task<List<Post>> GetPostsAsync()
+        public async Task<List<Post>> GetPostsAsync(GetAllPostsQuery getAllQuery = null, PaginationFilter paginationFilter = null)
         {
-            return await _dataContext.Posts.ToListAsync();
+            var queryable = _dataContext.Posts.AsQueryable();
+            if (paginationFilter== null)
+            {
+                return await queryable.Include(x => x.Tags).ToListAsync();
+            }
+
+            if (getAllQuery != null && !string.IsNullOrEmpty(getAllQuery.UserId))
+            {
+                queryable = queryable.Where(x => x.UserId == getAllQuery.UserId);
+            }
+
+            var skip = (paginationFilter.PageNumber - 1) * paginationFilter.PageSize;
+            return await queryable.Include(x => x.Tags)
+                .Skip(skip).Take(paginationFilter.PageSize).ToListAsync();
+
         }
 
         public async Task<bool> CreatePostAsync(Post post)

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Tweetbook3.Contracts.Requests;
+using Tweetbook.Contracts.Requests;
 
 namespace Tweetbook3.Validators
 {

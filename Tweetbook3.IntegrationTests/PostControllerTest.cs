@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Tweetbook3.Contracts.Requests;
-using Tweetbook3.Contracts.v1;
+using Tweetbook.Contracts.Requests;
+using Tweetbook.Contracts.v1;
 using Tweetbook3.Domain;
 using Xunit;
 

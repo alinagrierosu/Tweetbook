@@ -7,9 +7,9 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Tweetbook3.Contracts.Requests;
-using Tweetbook3.Contracts.Responses;
-using Tweetbook3.Contracts.v1;
+using Tweetbook.Contracts.Requests;
+using Tweetbook.Contracts.Responses;
+using Tweetbook.Contracts.v1;
 using Tweetbook3.Data;
 
 namespace Tweetbook3.IntegrationTests

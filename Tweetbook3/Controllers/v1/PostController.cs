@@ -2,11 +2,16 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Tweetbook3.Contracts.Requests;
-using Tweetbook3.Contracts.Responses;
-using Tweetbook3.Contracts.v1;
+using Tweetbook.Contracts.Helpers;
+using Tweetbook.Contracts.Requests;
+using Tweetbook.Contracts.Responses;
+using Tweetbook.Contracts.v1;
+using Tweetbook.Contracts.v1.Requests.Queries;
+using Tweetbook.Contracts.v1.Responses;
+using Tweetbook3.Cache;
 using Tweetbook3.Domain;
 using Tweetbook3.Extensions;
 using Tweetbook3.Services;
@@ -18,26 +23,43 @@ namespace Tweetbook3.Controllers.v1
     public class PostsController : Controller
     {
         private readonly IPostService _postService;
+        private readonly IUriService _uriService;
 
-        public PostsController(IPostService postService)
+        public PostsController(IPostService postService, IUriService uriService)
         {
             _postService = postService;
+            _uriService = uriService;
         }
 
         [HttpGet(ApiRoutes.Posts.GetAll)]
-        public async Task<IActionResult> GetAll()
+        [Cached(600)]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllPostsQuery getAllQuery, [FromQuery]PaginationQuery paginationQuery)
         {
-            var posts = await _postService.GetPostsAsync();
+            var pagination = new PaginationFilter
+            {
+                PageNumber = paginationQuery.PageNumber,
+                PageSize = paginationQuery.PageSize
+            };
+
+            var posts = await _postService.GetPostsAsync(getAllQuery, pagination);
             var postResponses = posts.Select(post => new PostResponse
             {
                 Id = post.Id,
                 Name = post.Name,
                 Tags = post.Tags.Select(x => new TagResponse { Name = x.TagName }).ToList()
             });
-            return Ok(postResponses);
+
+            if (pagination.PageNumber < 1 || pagination.PageSize < 1)
+            {
+                return Ok(new PagedResponse<PostResponse>(postResponses));
+            }
+
+            var paginationResponse = PaginationHelpers.CreatePaginatedResponse<PostResponse>(_uriService, pagination, postResponses);
+            return Ok(paginationResponse);
         }
 
         [HttpGet(ApiRoutes.Posts.Get)]
+        [Cached(600)]
         public async Task<IActionResult> Get([FromRoute] string postId)
         {
             var result = await _postService.GetPostByIdAsync(postId);
@@ -46,12 +68,12 @@ namespace Tweetbook3.Controllers.v1
                 return NotFound();
             }
 
-            return Ok(new PostResponse
+            return Ok(new Response<PostResponse>(new PostResponse
             {
                 Id = result.Id,
                 Name = result.Name,
                 Tags = result.Tags.Select(x => new TagResponse { Name = x.TagName }).ToList()
-            });
+            }));
         }
 
         [HttpPut(ApiRoutes.Posts.Update)]
@@ -68,7 +90,7 @@ namespace Tweetbook3.Controllers.v1
 
             var updated = await _postService.UpdatePostAsync(post);
             if (updated)
-                return Ok(post);
+                return Ok(new Response<Post>(post));
 
             return NotFound();
         }
@@ -92,10 +114,7 @@ namespace Tweetbook3.Controllers.v1
                 Tags = postRequest.Tags.Select(x => new PostTag { PostId = newPostId, TagName = x.TagName }).ToList()
             };
             await _postService.CreatePostAsync(post);
-
-            var baseUrl = HttpContext.Request.Scheme + "://" + HttpContext.Request.Host.ToUriComponent();
-            var locationUri = baseUrl + "/" + ApiRoutes.Posts.Get.Replace("{postId}", post.Id);
-
+            var locationUri = _uriService.GetPostUri(post.Id.ToString());
             var response = new PostResponse
             {
                 Id = post.Id,
@@ -103,7 +122,7 @@ namespace Tweetbook3.Controllers.v1
                 UserId = post.UserId,
                 Tags = post.Tags.Select(x => new TagResponse { Name = x.TagName }).ToList()
             };
-            return Created(locationUri, response);
+            return Created(locationUri, new Response<PostResponse>(response));
         }
 
         [HttpDelete(ApiRoutes.Posts.Delete)]

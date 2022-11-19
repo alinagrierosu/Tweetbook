@@ -1,0 +1,13 @@
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\bin\Debug\netcoreapp3.1\Tweetbook.Sdk.deps.json
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\bin\Debug\netcoreapp3.1\Tweetbook.Sdk.dll
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\bin\Debug\netcoreapp3.1\Tweetbook.Sdk.pdb
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.csproj.AssemblyReference.cache
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.AssemblyInfoInputs.cache
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.AssemblyInfo.cs
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.csproj.CoreCompileInputs.cache
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.dll
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.pdb
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\bin\Debug\netcoreapp3.1\Tweetbook.Contracts.dll
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\bin\Debug\netcoreapp3.1\Tweetbook.Contracts.pdb
+C:\Users\atalaba\Source\Repos\Tweetbook3\Tweetbook.Sdk\obj\Debug\netcoreapp3.1\Tweetbook.Sdk.csproj.CopyComplete
